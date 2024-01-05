@@ -1,0 +1,281 @@
+{
+    "Qualité": {
+      "ok": 6,
+      "RMQ": {
+        "Nbre" : 1,
+        "Part" : 0.21
+      },
+      "Resp. Contrôle Qualité": {
+        "Nbre" : 1,
+        "Part" : 0.18
+      },
+      "Ass. Qualité": {
+        "Nbre" : 1,
+        "Part" : 0.16
+      },
+      "Agent CQ 1": {
+        "Nbre" : 1,
+        "Part" : 0.15
+      },
+      "Agent CQ 2": {
+        "Nbre" : 1,
+        "Part" : 0.15
+      },
+      "Agent CQ 3": {
+        "Nbre" : 1,
+        "Part" : 0.15
+      }
+    },
+    "Commercial": {
+      "ok": 8,
+      "Resp. Commercial": {
+        "Nbre" : 1,
+        "Part" : 0.16
+      },
+      "Resp. Commandes et Livraison": {
+        "Nbre" : 1,
+        "Part" : 0.13
+      },
+      "Resp. Recouvrement": {
+        "Nbre" : 1,
+        "Part" : 0.13
+      },
+      "Resp. Facturation": {
+        "Nbre" : 1,
+        "Part" : 0.125
+      },
+      "Infographiste": {
+        "Nbre" : 1,
+        "Part" : 0.125
+      },
+      "Chef Magasinier": {
+        "Nbre" : 1,
+        "Part" : 0.12
+      },
+      "Agent Magasinier 1": {
+        "Nbre" : 1,
+        "Part" : 0.105
+      },
+      "Agent Magasinier 2": {
+        "Nbre" : 1,
+        "Part" : 0.105
+      }
+    },
+    "Maintenannce": {
+      "ok": 5,
+      "Resp. Maintenance + Resp. Electrique": {
+        "Nbre" : 1,
+        "Part" : 0.285
+      },
+      "Resp. Mécanique": {
+        "Nbre" : 1,
+        "Part" : 0.23
+      },
+      "Technicien Electrique": {
+        "Nbre" : 1,
+        "Part" : 0.225
+      },
+      "Agent maintenance Batiment": {
+        "Nbre" : 1,
+        "Part" : 0.135
+      },
+      "Ass. maintenance Batiment": {
+        "Nbre" : 1,
+        "Part" : 0.125
+      }
+    },
+    "GRH": {
+      "ok": 6,
+      "Resp. GRH": {
+        "Nbre" : 1,
+        "Part" : 0.27
+      },
+      "Standardiste": {
+        "Nbre" : 1,
+        "Part" : 0.17
+      },
+      "Concierge": {
+        "Nbre" : 3,
+        "Part" : 0.42
+      },
+      "Femme de Ménage": {
+        "Nbre" : 1,
+        "Part" : 0.14
+      }
+    },
+    "Approvisionnement": {
+      "ok": 2,
+      "Resp. Appro": {
+        "Nbre" : 1,
+        "Part" : 0.53
+      },
+      "Magasinier SF": {
+        "Nbre" : 1,
+        "Part" : 0.47
+      }
+    },
+    "Finance + Compta": {
+      "ok": 3,
+      "Comptable 1": {
+        "Nbre" : 1,
+        "Part" : 0.33
+      },
+      "Comptable 2": {
+        "Nbre" : 1,
+        "Part" : 0.33
+      },
+      "Financier": {
+        "Nbre" : 1,
+        "Part" : 0.34
+      }
+    },
+    "Production": {
+      "ok": 100,
+      "subDepartement" : {
+        "Resp. Production": {
+          "Nbre" : 1,
+          "Part" : "-"
+        },
+        "Planification": {
+          "Resp. Planification": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.39
+            },
+          "Ass. Resp Planification": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.35
+            },
+          "Agent Saisi": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.26
+            },
+          "Part" : 0.021
+        },
+        "Extrusion": {
+          "Nbre" : 13,
+          "Part" : "-",
+          "Chef Départemnt Ext": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.105
+            },
+          "Chef d'éq": {
+              "Nbre" : 4,
+              "Part" : "-",
+              "souPart": 0.375
+            },
+          "Extrudeur": {
+              "Nbre" : 4,
+              "Part" : "-",
+              "souPart": 0.31
+            },
+          "Opérateur": {
+              "Nbre" : 4,
+              "Part" : "-",
+              "souPart": 0.21
+            }
+        },
+        "Impression": {
+          "Nbre" : 19,
+          "Part" : "-",
+          "Chef Département Impression - Prépresse et Encre": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.075
+            },
+          "Chef d'éq": {
+              "Nbre" : 21,
+              "Part" : "-",
+              "souPart": 0.135
+            },
+          "Imprimeur Stack": {
+              "Nbre" : 3,
+              "Part" : "-",
+              "souPart": 0.165
+            },
+          "Imprimeur Tambour": {
+              "Nbre" : 6,
+              "Part" : "-",
+              "souPart": 0.375
+            },
+          "Aide Imprimeur": {
+              "Nbre" : 4,
+              "Part" : "-",
+              "souPart": 0.15
+            },
+          "Resp. Gestion des Clichés": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.04
+            },
+          "Assist. Gestion des clichés": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.03
+            },
+          "Assist. Prépresse et Encre": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.03
+            }
+        },
+        "Soudure": {
+          "Nbre" : 62,
+          "Part" : "-",
+          "Chef Dépatement Soudure": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.025
+            },
+          "Chef d'éq.I": {
+              "Nbre" : 2,
+              "Part" : "-",
+              "souPart": 0.425
+            },
+          "Resp. CCP": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.225
+            },
+          "Op. CCP Senior": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.2
+            },
+          "Op. CCP Junior": {
+              "Nbre" : 1,
+              "Part" : "-",
+              "souPart": 0.175
+            },
+          "Chefs de groupe": {
+              "Nbre" : 4,
+              "Part" : "-",
+              "souPart": 0.08
+            },
+          "Régleurs": {
+              "Nbre" : 6,
+              "Part" : "-",
+              "souPart": 0.105
+            },
+          "Manutentionnaires": {
+              "Nbre" : 2,
+              "Part" : "-",
+              "souPart": 0.25
+            },
+          "Opérateurs": {
+              "Nbre" : 44,
+              "Part" : "-",
+              "souPart": 0.6625
+            }
+        },
+        "Trait Déchet": {
+          "Nbre" : 2,
+          "Part" : "-"
+        }
+      }
+    }
+}
+  

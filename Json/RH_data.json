@@ -1,0 +1,223 @@
+[
+  {
+    "undefined": "Reclamation = somme des reclamations n-1",
+    "DPT": "EXTRUSION",
+    "Catégorie": "Chef de département",
+    "Part": 0.1,
+    "DE QUOI": "Chef d'équipe",
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9c6"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "EXTRUSION",
+    "Catégorie": "Chef d'équipe",
+    "Part": 0.4,
+    "DE QUOI": "budget",
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9c7"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "EXTRUSION",
+    "Catégorie": "Extrudeur",
+    "Part": 0.3,
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9c8"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "EXTRUSION",
+    "Catégorie": "Opérateur",
+    "Part": 0.2,
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9c9"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "IMPRESSION",
+    "Catégorie": "Chef de département",
+    "Part": 0.11,
+    "% Déchet": "-",
+    "Réclamations": 4,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9ca"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "IMPRESSION",
+    "Catégorie": "Chef d'équipe",
+    "Part": 0.19,
+    "% Déchet": "-",
+    "Réclamations": 2,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9cb"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "IMPRESSION",
+    "Catégorie": "Resp. Gestion des Clichés",
+    "Part": 0.08,
+    "% Déchet": "-",
+    "Réclamations": 4,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9cc"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "IMPRESSION",
+    "Catégorie": "Assist Gestion des clichés",
+    "Part": 0.07,
+    "% Déchet": "-",
+    "Réclamations": 4,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9cd"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "IMPRESSION",
+    "Catégorie": "Imprimeur Tambour",
+    "Part": 0.5,
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9ce"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "IMPRESSION",
+    "Catégorie": "Aide Imprimeur Tambour",
+    "Part": 0.2,
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9cf"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "IMPRESSION",
+    "Catégorie": "Imprimeur Stack",
+    "Part": 0.7,
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9d0"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "IMPRESSION",
+    "Catégorie": "Aide Imprimeur Seul",
+    "Part": 0.5,
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9d1"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "SOUDURE",
+    "Catégorie": "Chef de département",
+    "Part": 0.03,
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9d2"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "SOUDURE",
+    "Catégorie": "Chef d'équipe",
+    "Part": 0.04,
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9d3"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "SOUDURE",
+    "Catégorie": "Chefs de Groupe",
+    "Part": "12.8%",
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9d4"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "SOUDURE",
+    "Catégorie": "Régleurs",
+    "Part": "10.8%",
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9d5"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "SOUDURE",
+    "Catégorie": "Manutentionnaire",
+    "Part": "2.4%",
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9d6"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "SOUDURE",
+    "Catégorie": "Opérateur",
+    "Part": 0.67,
+    "% Déchet": "-",
+    "Réclamations": 1,
+    "Non Conformités": 0,
+    "Absence": 0,
+    "_id": "65985c2b32316d51510ec9d7"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "CCP",
+    "Catégorie": "CHEF DE DEPARTEMENT",
+    "_id": "65985c2b32316d51510ec9d8"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "CCP",
+    "_id": "65985c2b32316d51510ec9d9"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "CCP",
+    "_id": "65985c2b32316d51510ec9da"
+  },
+  {
+    "undefined": "EMPLOYE",
+    "DPT": "CCP",
+    "_id": "65985c2b32316d51510ec9db"
+  }
+]
