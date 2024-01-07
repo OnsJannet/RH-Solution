@@ -42,7 +42,7 @@ const readExcelFile = async (filePath, sheetName) => {
   DB Collection: timeSheetData 
 */
 
-app.post("/extractTimeSheetData", async (req, res) => {
+/*app.post("/extractTimeSheetData", async (req, res) => {
   try {
     // Read Excel file path
     const filePath = await readExcelFile(staticExcelFilePath, sheetName);
@@ -53,7 +53,14 @@ app.post("/extractTimeSheetData", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+});*/
+
+
+/* Ste 1: 
+*/
+app.use("/api/timeSheet", timeSheetRoutes);
+
+
 
 /* 
   STEP2: Endpoint for extracting team data from an Excel file 
@@ -154,7 +161,7 @@ app.post("/calculateFormulas", async (req, res) => {
   }
   DB Collection: Direction_With_Calculations
 */
-app.post("/saveWithCalculations", async (req, res) => {
+app.get("/saveWithCalculations", async (req, res) => {
   try {
     const jsonFilePath = "./Json/Direction.json";
     const collectionName = "Direction_With_Calculations";
@@ -190,7 +197,7 @@ app.post("/saveWithCalculations", async (req, res) => {
 });*/
 
 
-app.use("/api/timeSheet", timeSheetRoutes);
+
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);

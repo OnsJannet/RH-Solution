@@ -1,10 +1,9 @@
-// timeSheetController.js
-
 const mongoose = require("mongoose");
 const { connectToDatabase, disconnectFromDatabase } = require("../database");
 
 // Define the schema
 const timeSheetDataSchema = new mongoose.Schema({
+  ID: String,
   OF: String,
   Client: String,
   Matiere: String,
@@ -64,7 +63,7 @@ const uploadData = async (req, res) => {
         console.log("Inserting Data");
   
         // Save array of data to MongoDB
-        const collection = database.collection(`timeSheetData_${req.body.category}`);
+        const collection = database.collection(`timeSheetData_${req.body.category.toLowerCase()}`);
         await collection.insertMany(data);
   
         console.log("Data saved successfully");
@@ -125,9 +124,65 @@ const fetchData = async (req, res) => {
   }
 };
 
+const updateData = async (req, res) => {
+  try {
+    const { id, ...updatedData } = req.body;
+    const { client, database } = await connectToDatabase();
+
+    try {
+      const collection = database.collection(`timeSheetData_${req.params.category}`);
+      const result = await collection.replaceOne({ ID: Number(updatedData.ID) }, updatedData);
+
+      if (result.matchedCount > 0) {
+        res.status(200).json({ success: true, message: "Data updated successfully" });
+      } else {
+        res.status(404).json({ success: false, message: "Data not found" });
+      }
+    } finally {
+      if (client) {
+        await disconnectFromDatabase();
+      }
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
+
+
+const deleteData = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const { client, database } = await connectToDatabase();
+
+    try {
+      const collection = database.collection(`timeSheetData_${req.params.category}`);
+      const result = await collection.deleteOne({ ID: id });
+
+      if (result.deletedCount > 0) {
+        res.status(200).json({ success: true, message: "Data deleted successfully" });
+      } else {
+        res.status(404).json({ success: false, message: "Data not found" });
+      }
+    } finally {
+      if (client) {
+        await disconnectFromDatabase();
+      }
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
+
+
   
   module.exports = {
     uploadData,
     fetchData,
+    deleteData,
+    updateData,
   };
 

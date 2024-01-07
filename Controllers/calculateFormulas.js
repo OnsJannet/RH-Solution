@@ -30,7 +30,7 @@ async function calculateFormulasFromFile(reqBody) {
     const database = client.db("Incentive");
 
     // Extract filter parameters from the request body
-    const { DPT, EMPLOYE, Machine, EQ } = reqBody;
+    const { DPT, EMPLOYE, Machine, EQ, mois } = reqBody;
 
 
     // Check if DPT is an empty string & Fetching data from MongoDB collections
@@ -40,12 +40,12 @@ async function calculateFormulasFromFile(reqBody) {
       DPT.trim() === ""
         ? [defaultCollection]
         : DPT.toLowerCase() === "impression"
-        ? ["timeSheetData_impression", "timeSheetData_IMPRESSION"]
+        ? ["timeSheetData_impression"]
         : [`timeSheetData_${DPT}`];
 
     const pipeline = [
       {
-        $match: {}, // Add your match conditions if needed
+        $match: {}, 
       },
     ];
 
@@ -137,6 +137,35 @@ async function calculateFormulasFromFile(reqBody) {
         (entry) => entry["Machine"]?.toLowerCase() === Machine.toLowerCase()
       );
     }
+
+    if (mois) {
+      const targetMonth = mois.toLowerCase();
+      const monthMap = {
+        'janv.': '01',
+        'févr.': '02',
+        'mars': '03',
+        'avr.': '04',
+        'mai': '05',
+        'juin': '06',
+        'juil.': '07',
+        'août': '08',
+        'sept.': '09',
+        'oct.': '10',
+        'nov.': '11',
+        'déc.': '12',
+      };
+    
+      filteredData = filteredData.filter(
+        (entry) => {
+          const entryMonth = entry["date"].split('-')[1].toLowerCase();
+          const mappedMonth = monthMap[entryMonth];
+          console.log("entryMonth", entryMonth);
+          console.log("mappedMonth", mappedMonth);
+          return mappedMonth === targetMonth;
+        }
+      );
+    }
+    
 
     // Initialize result array
     const results = [];
