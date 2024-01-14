@@ -152,7 +152,7 @@ async function calculateFormulasFromFile(reqBody) {
     
           const entryDate = `${formattedEntryMonth}/${entryYear}`;
           
-          return entryDate === targetMonth;
+          return entryDate.includes(targetMonth);
         }
       );
     }
