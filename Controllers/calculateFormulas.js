@@ -123,7 +123,7 @@ async function calculateFormulasFromFile(reqBody) {
       }
     });
 
-    // Filter data based on EMPLOYE and Machine
+    // Filter data based on EMPLOYE and Machine and month
     let filteredData = data;
 
     if (EMPLOYE) {
@@ -140,31 +140,23 @@ async function calculateFormulasFromFile(reqBody) {
 
     if (mois) {
       const targetMonth = mois.toLowerCase();
-      const monthMap = {
-        'janv.': '01',
-        'févr.': '02',
-        'mars': '03',
-        'avr.': '04',
-        'mai': '05',
-        'juin': '06',
-        'juil.': '07',
-        'août': '08',
-        'sept.': '09',
-        'oct.': '10',
-        'nov.': '11',
-        'déc.': '12',
-      };
-    
+      
       filteredData = filteredData.filter(
         (entry) => {
-          const entryMonth = entry["date"].split('-')[1].toLowerCase();
-          const mappedMonth = monthMap[entryMonth];
-          console.log("entryMonth", entryMonth);
-          console.log("mappedMonth", mappedMonth);
-          return mappedMonth === targetMonth;
+          const entryDateParts = entry["date"].split('/');
+          const entryMonth = entryDateParts[1];
+          const entryYear = entryDateParts[2];
+          
+          // Adjust month format if needed (e.g., pad with leading zero)
+          const formattedEntryMonth = entryMonth.length === 1 ? `0${entryMonth}` : entryMonth;
+    
+          const entryDate = `${formattedEntryMonth}/${entryYear}`;
+          
+          return entryDate === targetMonth;
         }
       );
     }
+    
     
 
     // Initialize result array
