@@ -520,13 +520,13 @@ function calculatePrimeProductionValeur(
       subDepartementProduction["Trait Déchet"]
     ) {
       subDepartementProduction[subDep]["Prime Annuelle"] =
-        PrimeMensuelleProduction *
-        subDepartementProduction[subDep]["Valeur Variable"];
+        (PrimeMensuelleProduction *
+        subDepartementProduction[subDep]["Valeur Variable"])/100;
     } else {
       subDepartementProduction[subDep]["Prime Annuelle"] =
-        (PrimeMensuelleProduction *
+        ((PrimeMensuelleProduction *
           subDepartementProduction[subDep]["Valeur Variable"]) /
-        2;
+        2)/100;
     }
 
     // Calculate Prime Trimestrielle and Prime Mensuelle
