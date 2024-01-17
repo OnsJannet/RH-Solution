@@ -24,21 +24,9 @@ async function saveToMongoDB(jsonFilePath, collectionName) {
       return sum;
     }, 0);
 
-    console.log("jsonFilePath", jsonFilePath);
-
-    console.log("totalPrime", budget);
-
-    const testBudge = budget;
-    const testBudgetPerPrime = testBudge / 2;
-    console.log("testBudgetPerPrime", testBudgetPerPrime);
-    const testBudgetNormal = testBudgetPerPrime * (10 / 100);
-    console.log("testBudgetNormal", testBudgetNormal);
-    const testBudgetProduction = testBudgetPerPrime * (40 / 100);
-    console.log("testBudgetProduction", testBudgetProduction);
 
     // Read the JSON file
     const jsonData = JSON.parse(fs.readFileSync(jsonFilePath, "utf-8"));
-
     // Calculate the total sum of "ok" values for all departments except "Product"
     const totalOkExceptProduct = Object.keys(jsonData)
       .filter((department) => department.toLowerCase() !== "product")
@@ -58,15 +46,32 @@ async function saveToMongoDB(jsonFilePath, collectionName) {
       totalEmployeesMinusProduction
     );
 
+    const testBudge = budget;
+    //const testBudge = 200000;
+    const testBudgetPerPrime = testBudge / 2;
+    const testBudgetNormal = testBudgetPerPrime * (10 / 100);
+    const testBudgetProduction = testBudgetPerPrime * (40 / 100);
     const individueBudget = testBudgetPerPrime / totalOkExceptProduct;
-    console.log("individueBudget", individueBudget);
+
+    console.log("testBudgetNormal", testBudgetNormal);
+    console.log("testBudgetPerPrime", testBudgetPerPrime);
+    console.log("testBudgetProduction", testBudgetProduction);
+    console.log("individueBudget", individueBudget)
 
     // Perform calculations on jsonData (modify this part based on your calculations)
-    const calculatedData = performCalculations(
+     /*const calculatedData = performCalculations(
       jsonData,
       totalEmployeesMinusProduction,
       budget,
       testBudgetPerPrime,
+      testBudgetNormal,
+      testBudgetProduction,
+      individueBudget
+    );*/
+
+   const calculatedData = performCalculations(
+      jsonData,
+      totalEmployeesMinusProduction,
       testBudgetNormal,
       testBudgetProduction,
       individueBudget
@@ -106,8 +111,11 @@ function performCalculations(
       );
       departmentData["Valeur Variable"] = `${valeurVariable}%`;
 
+      console.log("testBudgetNormal2", testBudgetNormal);
+      console.log("testBudgetProduction2", testBudgetProduction);
+      console.log("individueBudget2", individueBudget)
       // Calculate Prime Annuelle, Prime Trimestrielle, and Prime Mensuelle for the department
-      calculatePrimes(departmentData, testBudgetNormal, testBudgetProduction);
+      calculatePrimes(departmentData, testBudgetNormal, testBudgetProduction, department);
 
       // Check if the department has sub-departments
       if (
@@ -120,6 +128,7 @@ function performCalculations(
         );
 
         calculateProductionSubDepartementsPart(departmentData);
+
 
         // Calculate Prime Annuelle, Prime Trimestrielle, and Prime Mensuelle for sub-departments
         calculateSubDepartmentsPrimes(
@@ -158,6 +167,8 @@ function performCalculations(
         );
 
         calculateProductionSubDepartementsValeur(subDepartementProduction);
+
+        calculateProductionSubDepartementsValeurVariable(subDepartementProduction)
 
         calculatePrimeProductionValeur(
           NumberofEmployers,
@@ -274,7 +285,7 @@ function calculateSubDepartmentsValeurVariable(
           subDepartment === "Trait Déchet" ||
           subDepartment === "Impression"
         ) {
-          break;
+            break;
         } else {
           // For other cases, use the default formula
           valeurVariable =
@@ -307,17 +318,20 @@ function calculateSubDepartmentsValeurVariable(
 function calculatePrimes(
   departmentData,
   testBudgetNormal,
-  testBudgetProduction
+  testBudgetProduction,
+  department
 ) {
   // Check if the department is "Production"
   const isProduction =
     departmentData && departmentData.hasOwnProperty("subDepartement");
 
+
   // Use the appropriate test budget based on the department
-  const testBudget = isProduction ? testBudgetProduction : testBudgetNormal;
+  const testBudgetIn = isProduction ? testBudgetProduction : testBudgetNormal;
+  console.log("testBudgetIn", testBudgetIn)
 
   const primeAnnuelle =
-    (parseFloat(departmentData["Valeur Variable"]) * testBudget) / 100;
+    (parseFloat(departmentData["Valeur Variable"]) * testBudgetIn) / 100;
 
   const primeAnnuelleValue = primeAnnuelle.toFixed(2);
   const primeTrimestrielleValue = (primeAnnuelle / 4).toFixed(2);
@@ -464,6 +478,20 @@ function calculateProductionSubDepartementsPart(
   }
 }
 
+
+function calculateProductionSubDepartementsValeurVariable(
+  subDepartementProduction
+) {
+  for (let subDep in subDepartementProduction) {
+    for (let souSubDep in subDepartementProduction[subDep]) {
+      subDepartementProduction[subDep][souSubDep]['Valeur Variable'] =
+        (subDepartementProduction[subDep][souSubDep].souPart *
+          subDepartementProduction[subDep]['Valeur Variable']) /
+        1;
+    }
+  }
+}
+
 // Calculates Production Departement Valeur
 function calculateRespProductionValeur(
   NumberofEmployers,
@@ -472,7 +500,7 @@ function calculateRespProductionValeur(
 ) {
   for (let subDep in subDepartementProduction) {
     subDepartementProduction[subDep]["Valeur Variable"] =
-      (subDepartementProduction[subDep].Part * 1) / ValeurVariableDepartments;
+      ((subDepartementProduction[subDep].Part * 1) / ValeurVariableDepartments)*100;
   }
 }
 

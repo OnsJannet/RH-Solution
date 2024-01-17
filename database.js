@@ -1,7 +1,8 @@
 const { MongoClient } = require("mongodb");
 
 
-const uri = "mongodb+srv://harry:er86NqaVCzAisEAY@cluster0.zlusx1s.mongodb.net/"
+//const uri = "mongodb+srv://harry:er86NqaVCzAisEAY@cluster0.zlusx1s.mongodb.net/"
+const uri = "mongodb://localhost:27017/"
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const databaseName = "Incentive";
