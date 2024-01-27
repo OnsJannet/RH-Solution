@@ -5,7 +5,7 @@ const uri = "mongodb+srv://Incentive:ZwGK449N1aDZ1wcu@incentiverh.jvoa2rf.mongod
 //const uri = "mongodb://localhost:27017/"
 const client = new MongoClient(uri, /*{ useNewUrlParser: true, useUnifiedTopology: true }*/);
 
-const databaseName = "Incentive2";
+const databaseName = "Incentive";
 
 async function connectToDatabase() {
   try {
