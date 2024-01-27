@@ -140,33 +140,32 @@ async function calculateFormulasFromFile(reqBody) {
     }
 
     if (mois) {
-      console.log("entered: " + mois)
-      const targetMonth = mois.toLowerCase();
-      
+      console.log("entered: " + mois);
+      const targetMonth = mois.padStart(2, '0'); // Ensure target month is two digits, e.g., '02'
+    
       filteredData = filteredData.filter(
-        
         (entry) => {
-          console.log("entry: ", entry["Client"])
-          console.log("entry: ", entry["DPT"])
-          console.log("entry: ", entry["ID"])
-          console.log("enteed filtered")
-          console.log("entry date", entry["date"])
+          console.log("entry: ", entry["Client"]);
+          console.log("entry: ", entry["DPT"]);
+          console.log("entry: ", entry["ID"]);
+          console.log("enteed filtered");
+          console.log("entry date", entry["date"]);
           const entryDateParts = entry["date"].split('/');
           const entryMonth = entryDateParts[1];
           const entryYear = entryDateParts[2];
-          
-          
+    
           // Adjust month format if needed (e.g., pad with leading zero)
-          const formattedEntryMonth = entryMonth.length === 1 ? `0${entryMonth}` : entryMonth;
-          console.log("========================================================")
-          console.log("formattedEntryMonth: " + formattedEntryMonth)
-          console.log("========================================================")
+          const formattedEntryMonth = entryMonth.padStart(2, '0');
+          console.log("========================================================");
+          console.log("formattedEntryMonth: " + formattedEntryMonth);
+          console.log("========================================================");
           const entryDate = `${formattedEntryMonth}/${entryYear}`;
-          console.log("entryDate: " + entryDate)
-          return entryDate.includes(targetMonth);
+          console.log("entryDate: " + entryDate);
+          return entryDate === `${targetMonth}/${entryYear}`;
         }
       );
     }
+    
     
     
     // Initialize result array
@@ -366,7 +365,6 @@ async function calculateFormulasFromFile(reqBody) {
       totalOperateur += calculationResult.Opérateur;
       total = totalChefDept + totalChefEq + totalExtrudeur + totalOperateur;
 
-      console.log("calculationResult", calculationResult)
 
       results.push(calculationResult);
     });
@@ -414,7 +412,7 @@ async function calculateFormulasFromFile(reqBody) {
       const C19 = designationPercentDechet?.toFixed(4);
       const B9 = categoryData;
 
-      console.log("Formula Elements:", {
+      /*console.log("Formula Elements:", {
         ProdSimul: ProdSimul,
         PUKG: B4,
         déchetsSimulT: T,
@@ -425,7 +423,7 @@ async function calculateFormulasFromFile(reqBody) {
         S: calculatedValue,
         NbReclamation: NbReclamation,
         totalTemps: totalTemps,
-      });
+      });*/
 
       return NbReclamation < C9 && parseFloat(S) > B19
         ? parseFloat(ProdSimul) *
@@ -437,9 +435,9 @@ async function calculateFormulasFromFile(reqBody) {
     // Create the new collection and insert/update the results
     const calculationCollection = `calculation_${collectionName}`;
     for (const result of results) {
-      console.log("result.Machine", result.Machine)
-      console.log("result.EMPLOYE", result.EMPLOYE)
-      console.log("result", result)
+      //console.log("result.Machine", result.Machine)
+      //console.log("result.EMPLOYE", result.EMPLOYE)
+      //console.log("result", result)
       await database
         .collection(calculationCollection)
         .updateOne(
