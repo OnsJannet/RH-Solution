@@ -53,7 +53,7 @@ const TimeSheetData = mongoose.model("timeSheetData", timeSheetDataSchema);
  * @param {Object} res - The response object used to send the status code and response data.
  * @returns {Promise<void>} - A promise that resolves when the data is successfully uploaded or rejects with an error.
  */
-const uploadData = async (req, res) => {
+/*const uploadData = async (req, res) => {
     try {
       const { data } = req.body;
       const { client, database } = await connectToDatabase();
@@ -84,7 +84,48 @@ const uploadData = async (req, res) => {
   
       res.status(500).json({ success: false, message: "Internal server error" });
     }
+};*/
+
+const uploadData = async (req, res) => {
+  try {
+      const requestData = req.body; // Assuming req.body is an array of objects
+
+      for (const categoryData of requestData) {
+          const { category, data } = categoryData;
+
+          const { client, database } = await connectToDatabase();
+          console.log(data);
+
+          try {
+              console.log(`Inserting Data for category: ${category}`);
+
+              // Save array of data to MongoDB
+              const collection = database.collection(`timeSheetData_${category.toLowerCase()}`);
+              await collection.insertMany(data);
+
+              console.log(`Data for category ${category} saved successfully`);
+          } finally {
+              // Disconnect from MongoDB
+              if (client) {
+                  await disconnectFromDatabase();
+              }
+          }
+      }
+
+      res.status(200).json({ success: true, message: "All data saved successfully" });
+  } catch (error) {
+      console.error("Error:", error);
+
+      if (error.name === "MongoError" && error.code === 16500) {
+          console.error("BulkWriteError - Duplicate Key:", error.writeErrors);
+      }
+
+      res.status(500).json({ success: false, message: "Internal server error" });
+  }
 };
+
+module.exports = { uploadData };
+
 
 const fetchData = async (req, res) => {
   /**

@@ -14,7 +14,7 @@ const timeSheetRoutes = require("./routes/timeSheetRoutes");
 const app = express();
 const port = 3002;
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
 const staticExcelFilePath =
@@ -154,11 +154,7 @@ app.post("/calculateFormulas", async (req, res) => {
 
 /* 
   STEP6: Endpoint for Calculating PRIME INTERESSEMENT 
-  Needs:
-  {
-    "nbrEmploye": 30,
-    "budget": 100000
-  }
+
   DB Collection: Direction_With_Calculations
 */
 app.get("/saveWithCalculations", async (req, res) => {

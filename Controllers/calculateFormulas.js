@@ -17,7 +17,8 @@ async function calculateFormulasFromFile(reqBody) {
   let RedDechets = reqBody.RedDechets || 0.2;
   let NbReclamation = reqBody.NbReclamation || 0;
 
-  const uri = "mongodb+srv://harry:er86NqaVCzAisEAY@cluster0.zlusx1s.mongodb.net/";
+  const uri = "mongodb+srv://Incentive:ZwGK449N1aDZ1wcu@incentiverh.jvoa2rf.mongodb.net/";
+  //const uri = "mongodb://localhost:27017/"
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -139,26 +140,35 @@ async function calculateFormulasFromFile(reqBody) {
     }
 
     if (mois) {
+      console.log("entered: " + mois)
       const targetMonth = mois.toLowerCase();
       
       filteredData = filteredData.filter(
+        
         (entry) => {
+          console.log("entry: ", entry["Client"])
+          console.log("entry: ", entry["DPT"])
+          console.log("entry: ", entry["ID"])
+          console.log("enteed filtered")
+          console.log("entry date", entry["date"])
           const entryDateParts = entry["date"].split('/');
           const entryMonth = entryDateParts[1];
           const entryYear = entryDateParts[2];
           
+          
           // Adjust month format if needed (e.g., pad with leading zero)
           const formattedEntryMonth = entryMonth.length === 1 ? `0${entryMonth}` : entryMonth;
-    
+          console.log("========================================================")
+          console.log("formattedEntryMonth: " + formattedEntryMonth)
+          console.log("========================================================")
           const entryDate = `${formattedEntryMonth}/${entryYear}`;
-          
+          console.log("entryDate: " + entryDate)
           return entryDate.includes(targetMonth);
         }
       );
     }
     
     
-
     // Initialize result array
     const results = [];
 
