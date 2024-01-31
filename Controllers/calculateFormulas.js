@@ -139,7 +139,7 @@ async function calculateFormulasFromFile(reqBody) {
       );
     }
 
-    /*if (mois) {
+    if (mois) {
       console.log("entered: " + mois);
       const targetMonth = mois.padStart(2, '0'); // Ensure target month is two digits, e.g., '02'
     
@@ -164,7 +164,7 @@ async function calculateFormulasFromFile(reqBody) {
           return entryDate === `${targetMonth}/${entryYear}`;
         }
       );
-    }*/
+    }
     
     
     
