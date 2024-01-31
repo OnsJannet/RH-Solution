@@ -18,7 +18,7 @@ async function calculateFormulasFromFile(reqBody) {
   let NbReclamation = reqBody.NbReclamation || 0;
 
   const uri = "mongodb+srv://Incentive:ZwGK449N1aDZ1wcu@incentiverh.jvoa2rf.mongodb.net/";
-  //const uri = "mongodb://localhost:27017/"
+   //const uri = "mongodb://localhost:27017/"
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -139,7 +139,7 @@ async function calculateFormulasFromFile(reqBody) {
       );
     }
 
-    if (mois) {
+    /*if (mois) {
       console.log("entered: " + mois);
       const targetMonth = mois.padStart(2, '0'); // Ensure target month is two digits, e.g., '02'
     
@@ -164,7 +164,7 @@ async function calculateFormulasFromFile(reqBody) {
           return entryDate === `${targetMonth}/${entryYear}`;
         }
       );
-    }
+    }*/
     
     
     

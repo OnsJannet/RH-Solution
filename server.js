@@ -19,6 +19,7 @@ app.use(cors());
 
 const staticExcelFilePath =
   "./Copy of  Incentive bp - Variables et formules-New.xlsx";
+  //"./Incentive bp - Variables et formules-New.xlsx";
 console.log("Absolute File Path:", path.resolve(staticExcelFilePath));
 const sheetName = "TIME SHEET 22";
 const teamSheetName = "MAP RH";
@@ -42,7 +43,7 @@ const readExcelFile = async (filePath, sheetName) => {
   DB Collection: timeSheetData 
 */
 
-/*app.post("/extractTimeSheetData", async (req, res) => {
+app.post("/extractTimeSheetData", async (req, res) => {
   try {
     // Read Excel file path
     const filePath = await readExcelFile(staticExcelFilePath, sheetName);
@@ -53,7 +54,7 @@ const readExcelFile = async (filePath, sheetName) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});*/
+});
 
 
 /* Ste 1: 

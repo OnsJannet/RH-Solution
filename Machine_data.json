@@ -8,7 +8,7 @@
       "formula": "SUM(D3:D43)",
       "result": 136238
     },
-    "_id": "65b4f84a5acc5105debd6377"
+    "_id": "65bab751f9dfb5747378495e"
   },
   {
     "DPT": "EXTRUSION",
@@ -17,7 +17,7 @@
     "% DE DECHET": "0.89%",
     "NBR EMPLOYES MIN": 4,
     "NBR EMPLOYES MAX": 4,
-    "_id": "65b4f84a5acc5105debd6378"
+    "_id": "65bab751f9dfb5747378495f"
   },
   {
     "DPT": "EXTRUSION",
@@ -26,7 +26,7 @@
     "% DE DECHET": "1.86%",
     "NBR EMPLOYES MIN": 4,
     "NBR EMPLOYES MAX": 4,
-    "_id": "65b4f84a5acc5105debd6379"
+    "_id": "65bab751f9dfb57473784960"
   },
   {
     "DPT": "EXTRUSION",
@@ -35,7 +35,7 @@
     "% DE DECHET": "0.80%",
     "NBR EMPLOYES MIN": 4,
     "NBR EMPLOYES MAX": 4,
-    "_id": "65b4f84a5acc5105debd637a"
+    "_id": "65bab751f9dfb57473784961"
   },
   {
     "DPT": "EXTRUSION",
@@ -44,7 +44,7 @@
     "% DE DECHET": "1.42%",
     "NBR EMPLOYES MIN": 4,
     "NBR EMPLOYES MAX": 4,
-    "_id": "65b4f84a5acc5105debd637b"
+    "_id": "65bab751f9dfb57473784962"
   },
   {
     "DPT": "EXTRUSION",
@@ -53,7 +53,7 @@
     "% DE DECHET": "1.15%",
     "NBR EMPLOYES MIN": 4,
     "NBR EMPLOYES MAX": 4,
-    "_id": "65b4f84a5acc5105debd637c"
+    "_id": "65bab751f9dfb57473784963"
   },
   {
     "DPT": "EXTRUSION",
@@ -62,7 +62,7 @@
     "% DE DECHET": "0.69%",
     "NBR EMPLOYES MIN": 4,
     "NBR EMPLOYES MAX": 4,
-    "_id": "65b4f84a5acc5105debd637d"
+    "_id": "65bab751f9dfb57473784964"
   },
   {
     "DPT": "EXTRUSION",
@@ -71,7 +71,7 @@
     "% DE DECHET": "1.91%",
     "NBR EMPLOYES MIN": 4,
     "NBR EMPLOYES MAX": 4,
-    "_id": "65b4f84a5acc5105debd637e"
+    "_id": "65bab751f9dfb57473784965"
   },
   {
     "DPT": "EXTRUSION",
@@ -80,7 +80,7 @@
     "% DE DECHET": "0.77%",
     "NBR EMPLOYES MIN": 4,
     "NBR EMPLOYES MAX": 4,
-    "_id": "65b4f84a5acc5105debd637f"
+    "_id": "65bab751f9dfb57473784966"
   },
   {
     "DPT": "IMPRESSION",
@@ -89,7 +89,7 @@
     "% DE DECHET": "1.22%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6380"
+    "_id": "65bab751f9dfb57473784967"
   },
   {
     "DPT": "IMPRESSION",
@@ -98,7 +98,7 @@
     "% DE DECHET": "1.17%",
     "NBR EMPLOYES MIN": 2,
     "NBR EMPLOYES MAX": 2,
-    "_id": "65b4f84a5acc5105debd6381"
+    "_id": "65bab751f9dfb57473784968"
   },
   {
     "DPT": "IMPRESSION",
@@ -107,7 +107,7 @@
     "% DE DECHET": "2.34%",
     "NBR EMPLOYES MIN": 2,
     "NBR EMPLOYES MAX": 2,
-    "_id": "65b4f84a5acc5105debd6382"
+    "_id": "65bab751f9dfb57473784969"
   },
   {
     "DPT": "IMPRESSION",
@@ -116,7 +116,7 @@
     "% DE DECHET": "1.53%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6383"
+    "_id": "65bab751f9dfb5747378496a"
   },
   {
     "DPT": "IMPRESSION",
@@ -125,7 +125,7 @@
     "% DE DECHET": "1.86%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6384"
+    "_id": "65bab751f9dfb5747378496b"
   },
   {
     "DPT": "IMPRESSION",
@@ -134,35 +134,35 @@
     "% DE DECHET": "2.19%",
     "NBR EMPLOYES MIN": 2,
     "NBR EMPLOYES MAX": 4,
-    "_id": "65b4f84a5acc5105debd6385"
+    "_id": "65bab751f9dfb5747378496c"
   },
   {
     "DPT": "CCP",
     "DESIGNATION": "IBI08",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6386"
+    "_id": "65bab751f9dfb5747378496d"
   },
   {
     "DPT": "CCP",
     "DESIGNATION": "IBI09",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6387"
+    "_id": "65bab751f9dfb5747378496e"
   },
   {
     "DPT": "CCP",
     "DESIGNATION": "ICR11",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6388"
+    "_id": "65bab751f9dfb5747378496f"
   },
   {
     "DPT": "CCP",
     "DESIGNATION": "ISI06",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6389"
+    "_id": "65bab751f9dfb57473784970"
   },
   {
     "DPT": "SOUDURE",
@@ -171,7 +171,7 @@
     "% DE DECHET": "0.1%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd638a"
+    "_id": "65bab751f9dfb57473784971"
   },
   {
     "DPT": "SOUDURE",
@@ -180,7 +180,7 @@
     "% DE DECHET": "0.18%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd638b"
+    "_id": "65bab751f9dfb57473784972"
   },
   {
     "DPT": "SOUDURE",
@@ -189,7 +189,7 @@
     "% DE DECHET": "2.30%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd638c"
+    "_id": "65bab751f9dfb57473784973"
   },
   {
     "DPT": "SOUDURE",
@@ -198,14 +198,14 @@
     "% DE DECHET": "1.81%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd638d"
+    "_id": "65bab751f9dfb57473784974"
   },
   {
     "DPT": "SOUDURE",
     "DESIGNATION": "SAR24",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd638e"
+    "_id": "65bab751f9dfb57473784975"
   },
   {
     "DPT": "SOUDURE",
@@ -214,7 +214,7 @@
     "% DE DECHET": "1.02%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd638f"
+    "_id": "65bab751f9dfb57473784976"
   },
   {
     "DPT": "SOUDURE",
@@ -223,7 +223,7 @@
     "% DE DECHET": "1.51%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6390"
+    "_id": "65bab751f9dfb57473784977"
   },
   {
     "DPT": "SOUDURE",
@@ -232,7 +232,7 @@
     "% DE DECHET": "0.43%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6391"
+    "_id": "65bab751f9dfb57473784978"
   },
   {
     "DPT": "SOUDURE",
@@ -241,7 +241,7 @@
     "% DE DECHET": "1.50%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6392"
+    "_id": "65bab751f9dfb57473784979"
   },
   {
     "DPT": "SOUDURE",
@@ -250,7 +250,7 @@
     "% DE DECHET": "1.98%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6393"
+    "_id": "65bab751f9dfb5747378497a"
   },
   {
     "DPT": "SOUDURE",
@@ -259,7 +259,7 @@
     "% DE DECHET": "4.73%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6394"
+    "_id": "65bab751f9dfb5747378497b"
   },
   {
     "DPT": "SOUDURE",
@@ -268,14 +268,14 @@
     "% DE DECHET": "2.75%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6395"
+    "_id": "65bab751f9dfb5747378497c"
   },
   {
     "DPT": "SOUDURE",
     "DESIGNATION": "SEL08",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6396"
+    "_id": "65bab751f9dfb5747378497d"
   },
   {
     "DPT": "SOUDURE",
@@ -284,7 +284,7 @@
     "% DE DECHET": "2.63%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 2,
-    "_id": "65b4f84a5acc5105debd6397"
+    "_id": "65bab751f9dfb5747378497e"
   },
   {
     "DPT": "SOUDURE",
@@ -293,7 +293,7 @@
     "% DE DECHET": "1.14%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 2,
-    "_id": "65b4f84a5acc5105debd6398"
+    "_id": "65bab751f9dfb5747378497f"
   },
   {
     "DPT": "SOUDURE",
@@ -302,7 +302,7 @@
     "% DE DECHET": "1.35%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd6399"
+    "_id": "65bab751f9dfb57473784980"
   },
   {
     "DPT": "SOUDURE",
@@ -311,7 +311,7 @@
     "% DE DECHET": "1.87%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 2,
-    "_id": "65b4f84a5acc5105debd639a"
+    "_id": "65bab751f9dfb57473784981"
   },
   {
     "DPT": "SOUDURE",
@@ -320,7 +320,7 @@
     "% DE DECHET": "3.39%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd639b"
+    "_id": "65bab751f9dfb57473784982"
   },
   {
     "DPT": "SOUDURE",
@@ -329,14 +329,14 @@
     "% DE DECHET": "4.00%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd639c"
+    "_id": "65bab751f9dfb57473784983"
   },
   {
     "DPT": "SOUDURE",
     "DESIGNATION": "SEL30",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd639d"
+    "_id": "65bab751f9dfb57473784984"
   },
   {
     "DPT": "SOUDURE",
@@ -345,7 +345,7 @@
     "% DE DECHET": "1.97%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd639e"
+    "_id": "65bab751f9dfb57473784985"
   },
   {
     "DPT": "SOUDURE",
@@ -354,7 +354,7 @@
     "% DE DECHET": "2.69%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd639f"
+    "_id": "65bab751f9dfb57473784986"
   },
   {
     "DPT": "SOUDURE",
@@ -363,6 +363,6 @@
     "% DE DECHET": "8.68%",
     "NBR EMPLOYES MIN": 1,
     "NBR EMPLOYES MAX": 1,
-    "_id": "65b4f84a5acc5105debd63a0"
+    "_id": "65bab751f9dfb57473784987"
   }
 ]
