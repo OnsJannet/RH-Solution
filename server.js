@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors"); 
 const extractTimeSheetData = require("./Controllers/extractData");
 const calculateFormulasFromFile = require("./Controllers/calculateFormulas");
+const getCalculationResults  = require("./Controllers/getCalculationResults");
 const extractTeamData = require("./Controllers/extractTeam");
 const extractVarTeamData = require("./Controllers/extractVarTeam");
 const ExcelJS = require("exceljs"); 
@@ -176,6 +177,36 @@ app.get("/saveWithCalculations", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+/* 
+  STEP7: Endpoint for retrieving calculation results from MongoDB
+  Needs:
+  {
+    "DPT": "" , (string)
+    "EMPLOYE":, (integer)
+    "MACHINE": "", (string)
+    "EQ": "", (string)
+    "Mois": 3, (integer)
+    "Annee": 2023, (integer)
+  }
+  DB Collection: calculation_timeSheetData_
+*/
+app.get("/getCalculationResults", async (req, res) => {
+  try {
+    const filters = req.query;
+    console.log("Received filters:", filters); // Add this line for debugging
+
+    // Call the function to retrieve calculation results
+    const result = await getCalculationResults(filters);
+
+    // Send the retrieved result back to the client
+    res.json({ result });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 
 // New route to save JSON data to MongoDB
 /*app.post("/saveToMongoDB", async (req, res) => {

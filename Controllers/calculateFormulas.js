@@ -188,9 +188,16 @@ async function calculateFormulasFromFile(reqBody) {
         let totalDechets = 0;
         let totalTemps = 0;
         let NbReclamation;
+        let entryMonthsaved;
+        let entryYearsaved;
 
         entries.forEach((entry) => {
           NbReclamation = entry["RECLAMATION"];
+          const [day, month, year] = entry["date"].split("/");
+          entryMonthsaved = month
+          entryYearsaved = year
+
+          
           if (currentDPT === "SOUDURE" || currentDPT === "soudure") {
             if (
               typeof entry["PCS"] === "object" &&
@@ -288,6 +295,8 @@ async function calculateFormulasFromFile(reqBody) {
                   (totalTemps / 60)
                 ).toFixed(0),
           "% déchets Simul": percentageDechets * (1 - RedDechets),
+          "Mois": entryMonthsaved,
+          "Annee": entryYearsaved,
           "Chef dept": calculateCategoryValue(
             currentDPT.toUpperCase() !== "CCP"
               ? categoryData[currentDPT.toUpperCase()]["Chef de département"]
@@ -402,7 +411,7 @@ async function calculateFormulasFromFile(reqBody) {
         const C19 = designationPercentDechet?.toFixed(4);
         const B9 = categoryData;
 
-        console.log("Formula Elements:", {
+        /*console.log("Formula Elements:", {
           ProdSimul: ProdSimul,
           PUKG: B4,
           déchetsSimulT: T,
@@ -413,7 +422,7 @@ async function calculateFormulasFromFile(reqBody) {
           S: calculatedValue,
           NbReclamation: NbReclamation,
           totalTemps: totalTemps,
-        });
+        });*/
 
         return NbReclamation < C9 && parseFloat(S) > B19
           ? parseFloat(ProdSimul) *
