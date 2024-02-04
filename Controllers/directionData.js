@@ -11,10 +11,10 @@ async function saveToMongoDB(jsonFilePath, collectionName) {
     // Fetch data from the "Prime" collection
     const primeCollection = database.collection("Prime");
     const primeData = await primeCollection.find().toArray();
-    console.log(primeData);
+    //console.log(primeData);
 
     // Calculate the sum of all "Prime" values
-    const budget = primeData.reduce((sum, entry) => {
+    /*const budget = primeData.reduce((sum, entry) => {
       // Iterate over each department in the entry
       Object.values(entry).forEach((department) => {
         // Add the "Prime" value to the sum
@@ -22,7 +22,57 @@ async function saveToMongoDB(jsonFilePath, collectionName) {
       });
 
       return sum;
-    }, 0);
+    }, 0);*/
+
+    let budget;
+
+    const entryKeys = primeData.length > 0 ? Object.keys(primeData[0]) : [];
+    console.log("Keys of an entry in primeData:", entryKeys);
+    
+    const lastYearEnteredKey = entryKeys.find((key) => key.startsWith('Last Year Entered'));
+    
+    if (lastYearEnteredKey) {
+      const lastYearEntered = primeData[0][lastYearEnteredKey];
+    
+      // Calculate the budget only if Last Year Entered is found
+      budget = primeData.reduce((sum, entry) => {
+        // Check if the entry corresponds to the specified year and is not the "Last Year Entered" key
+        if (
+          Object.keys(entry).some((key) =>
+            key.endsWith(`_${lastYearEntered}`) && key !== `Last Year Entered: ${lastYearEntered}`
+          )
+        ) {
+          // Log the matching keys for each entry
+          const matchingKeys = Object.keys(entry).filter((key) =>
+            key.endsWith(`_${lastYearEntered}`) && key !== `Last Year Entered: ${lastYearEntered}`
+          );
+          console.log("Matching keys:", matchingKeys);
+    
+          // Iterate over each matching key in the entry
+          matchingKeys.forEach((matchingKey) => {
+            // Add the "Prime" value of the matching key to the sum
+            sum += parseFloat(entry[matchingKey]?.Prime || 0);
+          });
+        }
+    
+        return sum;
+      }, 0);
+    
+      console.log("Budget for Last Year Entered:", budget);
+    } else {
+      console.log("Last Year Entered not found in primeData");
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
     // Read the JSON file
@@ -53,13 +103,14 @@ async function saveToMongoDB(jsonFilePath, collectionName) {
     const testBudgetProduction = testBudgetPerPrime * (40 / 100);
     const individueBudget = testBudgetPerPrime / totalOkExceptProduct;
 
-    console.log("testBudgetNormal", testBudgetNormal);
-    console.log("testBudgetPerPrime", testBudgetPerPrime);
-    console.log("testBudgetProduction", testBudgetProduction);
-    console.log("individueBudget", individueBudget)
+    //console.log("Test Budge:", testBudge);
+    //console.log("testBudgetNormal", testBudgetNormal);
+    //console.log("testBudgetPerPrime", testBudgetPerPrime);
+    //console.log("testBudgetProduction", testBudgetProduction);
+    //console.log("individueBudget", individueBudget)
 
     // Perform calculations on jsonData (modify this part based on your calculations)
-     /*const calculatedData = performCalculations(
+    /*const calculatedData = performCalculations(
       jsonData,
       totalEmployeesMinusProduction,
       budget,
@@ -69,7 +120,7 @@ async function saveToMongoDB(jsonFilePath, collectionName) {
       individueBudget
     );*/
 
-   const calculatedData = performCalculations(
+    const calculatedData = performCalculations(
       jsonData,
       totalEmployeesMinusProduction,
       testBudgetNormal,
@@ -80,7 +131,7 @@ async function saveToMongoDB(jsonFilePath, collectionName) {
     // Save data to MongoDB
     const collection = database.collection(collectionName);
     await collection.insertOne(calculatedData);
-    return { calculatedData};
+    return { calculatedData };
     //console.log(`Data has been saved to MongoDB collection: ${collectionName}`);
   } catch (error) {
     console.error(error);
@@ -111,11 +162,16 @@ function performCalculations(
       );
       departmentData["Valeur Variable"] = `${valeurVariable}%`;
 
-      console.log("testBudgetNormal2", testBudgetNormal);
-      console.log("testBudgetProduction2", testBudgetProduction);
-      console.log("individueBudget2", individueBudget)
+      //console.log("testBudgetNormal2", testBudgetNormal);
+      //console.log("testBudgetProduction2", testBudgetProduction);
+      //console.log("individueBudget2", individueBudget);
       // Calculate Prime Annuelle, Prime Trimestrielle, and Prime Mensuelle for the department
-      calculatePrimes(departmentData, testBudgetNormal, testBudgetProduction, department);
+      calculatePrimes(
+        departmentData,
+        testBudgetNormal,
+        testBudgetProduction,
+        department
+      );
 
       // Check if the department has sub-departments
       if (
@@ -128,7 +184,6 @@ function performCalculations(
         );
 
         calculateProductionSubDepartementsPart(departmentData);
-
 
         // Calculate Prime Annuelle, Prime Trimestrielle, and Prime Mensuelle for sub-departments
         calculateSubDepartmentsPrimes(
@@ -168,7 +223,9 @@ function performCalculations(
 
         calculateProductionSubDepartementsValeur(subDepartementProduction);
 
-        calculateProductionSubDepartementsValeurVariable(subDepartementProduction)
+        calculateProductionSubDepartementsValeurVariable(
+          subDepartementProduction
+        );
 
         calculatePrimeProductionValeur(
           NumberofEmployers,
@@ -285,7 +342,7 @@ function calculateSubDepartmentsValeurVariable(
           subDepartment === "Trait Déchet" ||
           subDepartment === "Impression"
         ) {
-            break;
+          break;
         } else {
           // For other cases, use the default formula
           valeurVariable =
@@ -325,10 +382,9 @@ function calculatePrimes(
   const isProduction =
     departmentData && departmentData.hasOwnProperty("subDepartement");
 
-
   // Use the appropriate test budget based on the department
   const testBudgetIn = isProduction ? testBudgetProduction : testBudgetNormal;
-  console.log("testBudgetIn", testBudgetIn)
+  //console.log("testBudgetIn", testBudgetIn);
 
   const primeAnnuelle =
     (parseFloat(departmentData["Valeur Variable"]) * testBudgetIn) / 100;
@@ -478,15 +534,14 @@ function calculateProductionSubDepartementsPart(
   }
 }
 
-
 function calculateProductionSubDepartementsValeurVariable(
   subDepartementProduction
 ) {
   for (let subDep in subDepartementProduction) {
     for (let souSubDep in subDepartementProduction[subDep]) {
-      subDepartementProduction[subDep][souSubDep]['Valeur Variable'] =
+      subDepartementProduction[subDep][souSubDep]["Valeur Variable"] =
         (subDepartementProduction[subDep][souSubDep].souPart *
-          subDepartementProduction[subDep]['Valeur Variable']) /
+          subDepartementProduction[subDep]["Valeur Variable"]) /
         1;
     }
   }
@@ -500,7 +555,9 @@ function calculateRespProductionValeur(
 ) {
   for (let subDep in subDepartementProduction) {
     subDepartementProduction[subDep]["Valeur Variable"] =
-      ((subDepartementProduction[subDep].Part * 1) / ValeurVariableDepartments)*100;
+      ((subDepartementProduction[subDep].Part * 1) /
+        ValeurVariableDepartments) *
+      100;
   }
 }
 
@@ -521,12 +578,14 @@ function calculatePrimeProductionValeur(
     ) {
       subDepartementProduction[subDep]["Prime Annuelle"] =
         (PrimeMensuelleProduction *
-        subDepartementProduction[subDep]["Valeur Variable"])/100;
+          subDepartementProduction[subDep]["Valeur Variable"]) /
+        100;
     } else {
       subDepartementProduction[subDep]["Prime Annuelle"] =
-        ((PrimeMensuelleProduction *
+        (PrimeMensuelleProduction *
           subDepartementProduction[subDep]["Valeur Variable"]) /
-        2)/100;
+        2 /
+        100;
     }
 
     // Calculate Prime Trimestrielle and Prime Mensuelle
