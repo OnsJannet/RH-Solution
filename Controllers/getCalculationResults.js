@@ -8,7 +8,7 @@ async function getCalculationResults(filters) {
     await client.connect();
     console.log("Connected to MongoDB");
 
-    const database = client.db("Incentive5");
+    const database = client.db("Incentive6");
 
     // Construct the dynamic collection name based on DPT value
     const collectionName = `calculation_timeSheetData_${filters.DPT || 'default'}`;
