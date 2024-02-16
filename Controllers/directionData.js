@@ -63,17 +63,6 @@ async function saveToMongoDB(jsonFilePath, collectionName) {
       console.log("Last Year Entered not found in primeData");
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 
     // Read the JSON file
     const jsonData = JSON.parse(fs.readFileSync(jsonFilePath, "utf-8"));

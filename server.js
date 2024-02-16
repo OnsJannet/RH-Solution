@@ -163,12 +163,11 @@ app.get("/saveWithCalculations", async (req, res) => {
   try {
     const jsonFilePath = "./Json/Direction.json";
     const collectionName = "Direction_With_Calculations";
-
     // Call the function to save to MongoDB with calculations
-
     const result = await saveToMongoDB(
       jsonFilePath,
       collectionName,
+      //req.query.year
     );
 
     res.status(200).json({ result });

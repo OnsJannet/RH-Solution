@@ -27,16 +27,22 @@ async function calculateFormulasFromFile(reqBody) {
     await client.connect();
     console.log("Connected to MongoDB");
 
-    const database = client.db("Incentive5");
+    const database = client.db("Incentive");
+
+    const machineData = await fetchAndSaveData("MachineData", "https://benplast-api.incentivesolutions.tech/api/Machines/RhSolutionGetVarMachine", database);
+    const rhvarData = await fetchAndSaveData("RHVAR", "https://benplast-api.incentivesolutions.tech/api/Rhvars/RhSolutionGetRhvar", database);
+    const rhData = await fetchAndSaveData("RH", "https://benplast-api.incentivesolutions.tech/api/Rhs/RhSolutionGetRh", database);
 
     const { EMPLOYE, Machine, EQ, Mois, Annee } = reqBody;
 
     const dptArray = Array.isArray(reqBody.DPT) ? reqBody.DPT : [reqBody.DPT];
+    console.log("dptArray", dptArray)
 
     const allResults = [];
 
     for (const currentDPT of dptArray) {
       const defaultCollection = "timeSheetData";
+      console.log("currentDPT", currentDPT)
 
       const collectionName =
         currentDPT.trim() === ""
@@ -65,6 +71,8 @@ async function calculateFormulasFromFile(reqBody) {
         const category = entry["Catégorie"];
         const part = entry["Part"];
         const departement = entry["DPT"];
+
+        console.log("categoryData", categoryData)
 
         if (category && part !== undefined && departement) {
           let updatedDepartement;
@@ -297,10 +305,11 @@ async function calculateFormulasFromFile(reqBody) {
           "% déchets Simul": percentageDechets * (1 - RedDechets),
           "Mois": entryMonthsaved,
           "Annee": entryYearsaved,
+
           "Chef dept": calculateCategoryValue(
             currentDPT.toUpperCase() !== "CCP"
               ? categoryData[currentDPT.toUpperCase()]["Chef de département"]
-              : categoryData["EXTRUSION"]["Chef de département"],
+              : categoryData["EXTRUSION"]["Chef de département"], 
             designationData[machine.toUpperCase()],
             MachineProductivity[machine.toUpperCase()],
             NbReclamation,
@@ -461,5 +470,26 @@ async function calculateFormulasFromFile(reqBody) {
     console.log("Disconnected from MongoDB");
   }
 }
+
+async function fetchAndSaveData(collectionName, apiUrl, database) {
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data from ${apiUrl}`);
+    }
+
+    const data = await response.json();
+
+    await database.collection(collectionName).insertMany(data);
+
+    console.log(`Data saved to ${collectionName} collection`);
+
+    return data;
+  } catch (error) {
+    console.error(`Error fetching and saving data from ${apiUrl}:`, error);
+    throw new Error("Internal server error");
+  }
+}
+
 
 module.exports = calculateFormulasFromFile;
