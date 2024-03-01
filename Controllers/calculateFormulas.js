@@ -383,7 +383,7 @@ async function calculateFormulasFromFile(reqBody) {
       };
 
       const primeData = {
-        [`Prime_Totale_${currentDPT.toLowerCase()}_${Annee}`]: {
+        [`Prime_Totale_${currentDPT.toLowerCase()}_${Mois}_${Annee}`]: {
           "Total Chef dept": totalChefDept.toFixed(2),
           "Total eq": totalChefEq.toFixed(2),
           "Total Extrudeur": totalExtrudeur.toFixed(2),
