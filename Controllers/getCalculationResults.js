@@ -1,14 +1,15 @@
 const { MongoClient } = require("mongodb");
 
 async function getCalculationResults(filters) {
-  const uri = "mongodb+srv://Incentive:ZwGK449N1aDZ1wcu@incentiverh.jvoa2rf.mongodb.net/";
+  //const uri = "mongodb+srv://incentive:incentive2024@cluster0.zlusx1s.mongodb.net/incentiveDB?retryWrites=true&w=majority";
+  const uri = "mongodb://localhost:27017/"
   const client = new MongoClient(uri);
 
   try {
     await client.connect();
     console.log("Connected to MongoDB");
 
-    const database = client.db("Incentive5");
+    const database = client.db("Incentive14");
 
     // Construct the dynamic collection name based on DPT value
     const collectionName = `calculation_timeSheetData_${filters.DPT || 'default'}`;

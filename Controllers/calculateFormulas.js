@@ -16,8 +16,8 @@ async function calculateFormulasFromFile(reqBody) {
   let AugProd = reqBody.AugProd || 0.3;
   let RedDechets = reqBody.RedDechets || 0.2;
 
-  const uri =
-    "mongodb+srv://Incentive:ZwGK449N1aDZ1wcu@incentiverh.jvoa2rf.mongodb.net/";
+  /*const uri = "mongodb+srv://Incentive:ZwGK449N1aDZ1wcu@incentiverh.jvoa2rf.mongodb.net/";*/
+  const uri = "mongodb://localhost:27017/";
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -27,22 +27,34 @@ async function calculateFormulasFromFile(reqBody) {
     await client.connect();
     console.log("Connected to MongoDB");
 
-    const database = client.db("Incentive");
+    const database = client.db("Incentive14");
 
-    const machineData = await fetchAndSaveData("MachineData", "https://benplast-api.incentivesolutions.tech/api/Machines/RhSolutionGetVarMachine", database);
-    const rhvarData = await fetchAndSaveData("RHVAR", "https://benplast-api.incentivesolutions.tech/api/Rhvars/RhSolutionGetRhvar", database);
-    const rhData = await fetchAndSaveData("RH", "https://benplast-api.incentivesolutions.tech/api/Rhs/RhSolutionGetRh", database);
+    const machineData = await fetchAndSaveData(
+      "MachineData",
+      "https://benplast-api.incentivesolutions.tech/api/Machines/RhSolutionGetVarMachine",
+      database
+    );
+    const rhvarData = await fetchAndSaveData(
+      "RHVAR",
+      "https://benplast-api.incentivesolutions.tech/api/Rhvars/RhSolutionGetRhvar",
+      database
+    );
+    const rhData = await fetchAndSaveData(
+      "RH",
+      "https://benplast-api.incentivesolutions.tech/api/Rhs/RhSolutionGetRh",
+      database
+    );
 
     const { EMPLOYE, Machine, EQ, Mois, Annee } = reqBody;
 
     const dptArray = Array.isArray(reqBody.DPT) ? reqBody.DPT : [reqBody.DPT];
-    console.log("dptArray", dptArray)
+    console.log("dptArray", dptArray);
 
     const allResults = [];
 
     for (const currentDPT of dptArray) {
       const defaultCollection = "timeSheetData";
-      console.log("currentDPT", currentDPT)
+      console.log("currentDPT", currentDPT);
 
       const collectionName =
         currentDPT.trim() === ""
@@ -72,7 +84,7 @@ async function calculateFormulasFromFile(reqBody) {
         const part = entry["Part"];
         const departement = entry["DPT"];
 
-        console.log("categoryData", categoryData)
+        console.log("categoryData", categoryData);
 
         if (category && part !== undefined && departement) {
           let updatedDepartement;
@@ -134,8 +146,7 @@ async function calculateFormulasFromFile(reqBody) {
 
       if (Machine) {
         filteredData = filteredData.filter(
-          (entry) =>
-            entry["Machine"]?.toLowerCase() === Machine.toLowerCase()
+          (entry) => entry["Machine"]?.toLowerCase() === Machine.toLowerCase()
         );
       }
 
@@ -202,10 +213,9 @@ async function calculateFormulasFromFile(reqBody) {
         entries.forEach((entry) => {
           NbReclamation = entry["RECLAMATION"];
           const [day, month, year] = entry["date"].split("/");
-          entryMonthsaved = month
-          entryYearsaved = year
+          entryMonthsaved = month;
+          entryYearsaved = year;
 
-          
           if (currentDPT === "SOUDURE" || currentDPT === "soudure") {
             if (
               typeof entry["PCS"] === "object" &&
@@ -256,9 +266,7 @@ async function calculateFormulasFromFile(reqBody) {
         });
 
         const percentageDechets =
-          totalProdM === 0
-            ? 0
-            : parseFloat((totalDechets / totalProdKg) * 100);
+          totalProdM === 0 ? 0 : parseFloat((totalDechets / totalProdKg) * 100);
 
         const calculatedValue =
           totalTemps / 60 === 0
@@ -286,13 +294,9 @@ async function calculateFormulasFromFile(reqBody) {
           "Durée mn": formatTime(totalTemps),
           "Duree h": (totalTemps / 60).toFixed(2),
           "Producté (m/h)":
-            totalTemps === 0
-              ? 0
-              : (totalProdM / (totalTemps / 60)).toFixed(0),
+            totalTemps === 0 ? 0 : (totalProdM / (totalTemps / 60)).toFixed(0),
           "Producté (kg/h)":
-            totalTemps === 0
-              ? 0
-              : (totalProdKg / (totalTemps / 60)).toFixed(0),
+            totalTemps === 0 ? 0 : (totalProdKg / (totalTemps / 60)).toFixed(0),
           "% déchets": percentageDechets,
           "Prod (kg) Simul": (totalProdKg * (1 + AugProd)).toFixed(0),
           "Producté (kg/h) Simul":
@@ -303,13 +307,13 @@ async function calculateFormulasFromFile(reqBody) {
                   (totalTemps / 60)
                 ).toFixed(0),
           "% déchets Simul": percentageDechets * (1 - RedDechets),
-          "Mois": entryMonthsaved,
-          "Annee": entryYearsaved,
+          Mois: entryMonthsaved,
+          Annee: entryYearsaved,
 
           "Chef dept": calculateCategoryValue(
             currentDPT.toUpperCase() !== "CCP"
               ? categoryData[currentDPT.toUpperCase()]["Chef de département"]
-              : categoryData["EXTRUSION"]["Chef de département"], 
+              : categoryData["EXTRUSION"]["Chef de département"],
             designationData[machine.toUpperCase()],
             MachineProductivity[machine.toUpperCase()],
             NbReclamation,
@@ -442,17 +446,24 @@ async function calculateFormulasFromFile(reqBody) {
 
       const calculationCollection = `calculation_${collectionName}`;
       for (const result of results) {
-        await database
-          .collection(calculationCollection)
-          .updateOne(
-            { Machine: result.Machine, EMPLOYE: result.EMPLOYE },
-            { $set: result },
-            { upsert: true }
-          );
+        await database.collection(calculationCollection).updateOne(
+          {
+            Machine: result.Machine,
+            EMPLOYE: result.EMPLOYE,
+            Mois: result.Mois,
+            Annee: result.Annee,
+          },
+          { $set: result },
+          { upsert: true }
+        );
       }
 
       const primeCollection = database.collection("Prime");
-      await primeCollection.updateOne({}, { $set: primeData }, { upsert: true });
+      await primeCollection.updateOne(
+        {},
+        { $set: primeData },
+        { upsert: true }
+      );
 
       allResults.push({
         DPT: currentDPT,
@@ -490,6 +501,5 @@ async function fetchAndSaveData(collectionName, apiUrl, database) {
     throw new Error("Internal server error");
   }
 }
-
 
 module.exports = calculateFormulasFromFile;
